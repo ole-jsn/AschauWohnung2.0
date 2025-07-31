@@ -44,7 +44,7 @@ export const useAuth = () => useContext(AuthContext);
 
 // Backend-URL ggf. anpassen
 const API = axios.create({
-  baseURL: 'https://dein-backend-service.onrender.com/api', // Render-URL deines Backends
+  baseURL: 'https://aschauwohnung.onrender.com/api',
   withCredentials: true,
 });
 
