@@ -44,7 +44,7 @@ export const useAuth = () => useContext(AuthContext);
 
 // Backend-URL ggf. anpassen
 const API = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: 'https://dein-backend-service.onrender.com/api', // Render-URL deines Backends
   withCredentials: true,
 });
 
