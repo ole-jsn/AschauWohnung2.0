@@ -149,5 +149,5 @@ app.delete('/api/users/:id', requireAuth, requireAdmin, (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Backend läuft auf http://localhost:${PORT}`);
+  console.log(`Backend läuft auf https://aschauwohnung2-0.onrender.com`);
 }); 
