@@ -44,7 +44,7 @@ export const useAuth = () => useContext(AuthContext);
 
 // Backend-URL ggf. anpassen
 const API = axios.create({
-  baseURL: 'https://aschauwohnung.onrender.com/api',
+  baseURL: 'http://localhost:4000/api',
   withCredentials: true,
 });
 

@@ -12,7 +12,7 @@ const AdminPage: React.FC = () => {
     isAdmin: false,
     isActive: true,
   });
-
+  
   useEffect(() => {
     if (user?.isAdmin) loadUsers();
   }, [user]);
@@ -23,7 +23,7 @@ const AdminPage: React.FC = () => {
     setNewUser({ username: '', password: '', isAdmin: false, isActive: true });
     setShowAddForm(false);
   };
-
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
