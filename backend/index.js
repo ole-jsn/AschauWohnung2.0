@@ -28,7 +28,7 @@ db.serialize(() => {
 app.use(helmet());
 app.use(express.json());
 app.use(cors({
-  origin: 'https://aschau-wohnung2-0.vercel.app/', // Frontend-URL ggf. anpassen
+  origin: 'https://aschauwohnung2-0.onrender.com', // Frontend-URL ggf. anpassen
   credentials: true
 }));
 app.use(session({
