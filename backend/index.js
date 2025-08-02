@@ -36,12 +36,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'supersecret',
   resave: false,
   saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: false, // auf true setzen, wenn HTTPS verwendet wird
-    sameSite: 'lax',
-    maxAge: 1000 * 60 * 60 * 2 // 2 Stunden
-  }
+cookie: {
+  httpOnly: true,
+  secure: true, // MUSS true sein, wenn SameSite=None
+  sameSite: 'none', // <- das ist wichtig!
+  maxAge: 1000 * 60 * 60 * 2 // 2 Stunden
+}
 }));
 app.use(csurf());
 
