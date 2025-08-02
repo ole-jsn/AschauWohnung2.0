@@ -28,7 +28,7 @@ db.serialize(() => {
 app.use(helmet());
 app.use(express.json());
 app.use(cors({
-  origin: 'https://aschauwohnung2-0-1.onrender.com', // Frontend-URL ggf. anpassen
+  origin: 'https://aschauwohnung2-0-1.onrender.com', // Deine echte Frontend-URL auf Render
   credentials: true
 }));
 app.use(session({
@@ -38,9 +38,9 @@ app.use(session({
   saveUninitialized: false,
 cookie: {
   httpOnly: true,
-  secure: true, // MUSS true sein, wenn SameSite=None
-  sameSite: 'none', // <- das ist wichtig!
-  maxAge: 1000 * 60 * 60 * 2 // 2 Stunden
+  secure: true,      // MUSS true sein, da Render HTTPS verwendet
+  sameSite: 'none',  // MUSS 'none' sein für Cross-Origin
+  maxAge: 1000 * 60 * 60 * 2
 }
 }));
 app.use(csurf());
