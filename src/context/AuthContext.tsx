@@ -66,7 +66,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await API.get('/me');
+        const res = await API.get('/api/me');
         setUser(res.data);
       } catch {
         setUser(null);
@@ -82,7 +82,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setError(null);
     try {
       const token = await fetchCsrfToken();
-      const res = await API.post('/login', { username, password }, { headers: { 'x-csrf-token': token } });
+      const res = await API.post('/api/login', { username, password }, { headers: { 'x-csrf-token': token } });
       setUser(res.data);
       return true;
     } catch (e: any) {
@@ -94,14 +94,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Logout
   const logout = async () => {
     const token = await fetchCsrfToken();
-    await API.post('/logout', {}, { headers: { 'x-csrf-token': token } });
+    await API.post('/api/logout', {}, { headers: { 'x-csrf-token': token } });
     setUser(null);
   };
 
   // Admin: User-Übersicht laden
   const loadUsers = async () => {
     try {
-      const res = await API.get('/users');
+      const res = await API.get('/api/users');
       setUsers(res.data);
     } catch {}
   };
@@ -109,21 +109,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Admin: User anlegen
   const addUser = async (newUser: Omit<User, 'id'>) => {
     const token = await fetchCsrfToken();
-    await API.post('/users', newUser, { headers: { 'x-csrf-token': token } });
+    await API.post('/api/users', newUser, { headers: { 'x-csrf-token': token } });
     loadUsers();
   };
 
   // Admin: User aktivieren/deaktivieren
   const updateUser = async (id: string, isActive: boolean) => {
     const token = await fetchCsrfToken();
-    await API.patch(`/users/${id}/active`, { isActive }, { headers: { 'x-csrf-token': token } });
+    await API.patch(`/api/users/${id}/active`, { isActive }, { headers: { 'x-csrf-token': token } });
     loadUsers();
   };
 
   // Admin: User löschen
   const deleteUser = async (id: string) => {
     const token = await fetchCsrfToken();
-    await API.delete(`/users/${id}`, { headers: { 'x-csrf-token': token } });
+    await API.delete(`/api/users/${id}`, { headers: { 'x-csrf-token': token } });
     loadUsers();
   };
 
