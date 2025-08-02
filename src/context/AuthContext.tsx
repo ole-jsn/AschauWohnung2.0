@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
 
   const fetchCsrfToken = async () => {
-    const res = await API.get('/api//csrf-token');
+    const res = await API.get('/api/csrf-token');
     setCsrfToken(res.data.csrfToken);
     return res.data.csrfToken;
   };
